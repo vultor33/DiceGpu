@@ -26,10 +26,15 @@ vector<double> AuxMath::matrixXVector(vector< vector<double> > &M, double x, dou
 	return Mv;
 }
 
-double AuxMath::fRand(double fMin, double fMax)
+double AuxMath::randomNumber(double fMin, double fMax)
 {
 	double f = (double)rand() / RAND_MAX;
 	return fMin + f * (fMax - fMin);
+}
+
+int AuxMath::randomNumber(int fMin, int fMax)
+{
+	return fMin + (rand() % (int)(fMax - fMin + 1));
 }
 
 double AuxMath::norm(const double x, const double y, const double z)

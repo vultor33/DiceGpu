@@ -51,3 +51,19 @@ double Fitness::lennardJones(vector<double> &x)
 		return 1.0e99;
 	return vlj;
 }
+
+double Fitness::lennardJonesIJ(vector<double> &x, int i, int j, int natm)
+{
+	double r, r2, r4, r6, r12;
+	r = sqrt(
+		(x[i] - x[j])*(x[i] - x[j]) +
+		(x[i + natm] - x[j + natm])*(x[i + natm] - x[j + natm]) +
+		(x[i + 2 * natm] - x[j + 2 * natm])*(x[i + 2 * natm] - x[j + 2 * natm])
+		);
+	r2 = r * r;
+	r4 = r2 * r2;
+	r6 = r4 * r2;
+	r12 = r6 * r6;
+	return 4.0e0 * (-1 / r6 + 1 / r12);
+}
+
